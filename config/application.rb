@@ -37,6 +37,6 @@ module UnstableShop
 
     config.time_zone = "Taipei"
     config.hosts << "ngrok.etrex.tw"
-    config.hosts << "ngrok.etrex.tw"
+    config.hosts << "unstable-shop.fly.dev"
   end
 end
