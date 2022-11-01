@@ -11,4 +11,8 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
+
+  def image
+    image_url
+  end
 end

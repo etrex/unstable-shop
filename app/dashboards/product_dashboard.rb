@@ -10,7 +10,8 @@ class ProductDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     description: Field::Text,
-    image_url: Field::Image,
+    image: Field::Image,
+    image_url: Field::String,
     name: Field::String,
     price: Field::Number,
     created_at: Field::DateTime,
@@ -24,8 +25,8 @@ class ProductDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    image
     name
-    image_url
     price
   ].freeze
 
@@ -33,10 +34,10 @@ class ProductDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    image
     name
     price
     description
-    image_url
     created_at
     updated_at
   ].freeze
