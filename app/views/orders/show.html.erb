@@ -1,0 +1,36 @@
+
+<div class="flex justify-center items-center">
+  <div class="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 bg-gray-50 text-gray-800">
+    <h2 class="text-xl font-semibold">訂單明細</h2>
+    <span class="font-semibold">序號: <%= @order.id %> </span>
+    <span class="font-semibold">結帳時間: <%= @order.updated_at %> </span>
+    <ul class="flex flex-col divide-y divide-gray-300">
+      <% @order.order_items.each do |item| %>
+        <li class="flex flex-col py-6 sm:flex-row sm:justify-between">
+          <div class="flex w-full space-x-2 sm:space-x-4">
+            <img class="flex-shrink-0 object-cover w-20 h-20 border-transparent rounded outline-none sm:w-32 sm:h-32 bg-gray-500" src="<%= item.product.image_url %>">
+            <div class="flex flex-col justify-between w-full pb-4">
+              <div class="flex justify-between w-full pb-2 space-x-2">
+                <div class="space-y-1">
+                  <h3 class="text-lg font-semibold leading-snug sm:pr-8"><%= item.product.name %></h3>
+                </div>
+                <div class="text-right">
+                  <p class="text-lg font-semibold">$<%= item.price %> x <%= item.quantity %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <div class="space-y-1 text-right">
+      <p>總計:
+        <span class="font-semibold">$<%= @order.total_price %></span>
+      </p>
+      <p class="text-sm text-gray-600">不含稅以及運費</p>
+    </div>
+    <div class="flex justify-end space-x-4">
+      <%= link_to "查其他訂單", orders_path, class: "px-6 py-2 border rounded-md border-violet-600" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<%= raw(Kamiflex.build(self) do
+  bubble do
+    body do
+      horizontal_box do
+        text "🍔", flex: 0, action: message_action("/")
+        text "Show Product", weight: "bold", margin: "sm"
+        text "edit", align: "end", action: uri_action(liff_path(path: edit_product_path(@product) )), color: "#0000ee"
+      end
+      separator
+
+      horizontal_box margin: "md" do
+        vertical_box do
+          text "id", weight: "bold", margin: "xs"
+          text "name", weight: "bold", margin: "xs"
+          text "description", weight: "bold", margin: "xs"
+          text "image_url", weight: "bold", margin: "xs"
+          text "price", weight: "bold", margin: "xs"
+        end
+        vertical_box do
+          text @product.id.blank? ? "-" : @product.id.to_s, align: "end", margin: "xs"
+          text @product.name.blank? ? "-" : @product.name.to_s, align: "end", margin: "xs"
+          text @product.description.blank? ? "-" : @product.description.to_s, align: "end", margin: "xs"
+          text @product.image_url.blank? ? "-" : @product.image_url.to_s, align: "end", margin: "xs"
+          text @product.price.blank? ? "-" : @product.price.to_s, align: "end", margin: "xs"
+        end
+      end
+    end
+  end
+end )%>

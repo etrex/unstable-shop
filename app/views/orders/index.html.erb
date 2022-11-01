@@ -1,0 +1,58 @@
+<% if @orders.present? %>
+
+<div class="container p-2 mx-auto sm:p-4 text-gray-800">
+	<h2 class="mb-4 text-2xl font-semibold leading-tight">查訂單</h2>
+	<div class="overflow-x-auto">
+		<table class="min-w-full text-xs">
+			<colgroup>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col class="w-24">
+			</colgroup>
+			<thead class="bg-gray-300">
+				<tr class="text-left">
+					<th class="p-3">訂單序號</th>
+					<th class="p-3">結帳日期</th>
+					<th class="p-3 text-right">總計</th>
+					<th class="p-3"></th>
+				</tr>
+			</thead>
+			<tbody>
+        <% @orders.each do |order| %>
+          <tr class="border-b border-opacity-20 border-gray-300 bg-gray-50">
+            <td class="p-3">
+              <p><%= order.id %></p>
+            </td>
+            <td class="p-3">
+              <p><%= order.updated_at %></p>
+            </td>
+            <td class="p-3 text-right">
+              <p>$<%= order.total_price %></p>
+            </td>
+            <td class="p-3 text-right">
+              <span class="px-3 py-1 font-semibold rounded-md bg-violet-600 text-gray-50">
+                <%= link_to '查看明細', order %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<% else %>
+
+  <div class="container p-2 mx-auto sm:p-4 text-gray-800 space-y-4">
+    <h2 class="text-xl font-semibold">查訂單</h2>
+    <p>目前沒有訂單</p>
+
+    <div class="flex space-x-4">
+      <%= link_to "回到商店", root_path, class: "px-6 py-2 border rounded-md border-violet-600" %>
+    </div>
+  </div>
+
+<% end %>
