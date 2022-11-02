@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def timeout
-    sleep rand * 120 if Setting.timeout
+    sleep 120 if Setting.timeout
   end
 end
