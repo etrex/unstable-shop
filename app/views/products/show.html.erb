@@ -15,7 +15,9 @@
           <p class="text-lg font-semibold">$ <%= @product.price %></p>
         </div>
         <div class="text-right">
-          <%= button_to "加入購物車", cart_path(product_id: @product.id, quantity: 1), method: :put, class: "px-8 py-3 text-lg font-semibold rounded bg-violet-600 text-gray-50" %>
+          <% unless Setting.missing_button_add_to_cart %>
+            <%= button_to "加入購物車", cart_path(product_id: @product.id, quantity: 1), method: :put, class: "px-8 py-3 text-lg font-semibold rounded bg-violet-600 text-gray-50" %>
+          <% end %>
         </div>
       </div>
     </div>

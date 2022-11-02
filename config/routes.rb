@@ -13,11 +13,16 @@ Rails.application.routes.draw do
     resources :products
     resources :orders
     resources :order_items
+    resources :settings
 
     root to: "users#index"
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'omniauth_callbacks'
+  }
+
   get :index, to: "home#index"
 
   # 加入好友時的自我介紹訊息
